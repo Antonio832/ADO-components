@@ -1,0 +1,38 @@
+agm-map {
+    width: 100vw;
+    height: 500px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.067);
+}
+
+.red{
+    width: 10px;
+    aspect-ratio: 1 / 1;
+    background-color: red;
+}
+
+// .bullet{
+//     position: absolute;
+//     top: -48px;
+//     left: -24px;
+// }
+
+.infoContent{
+    display: flex;
+    flex-direction: row;
+}
+
+.imag{
+    width: 5rem;
+    aspect-ratio: 16 / 9;
+}
+
+.cont{
+    width: 8rem;
+}

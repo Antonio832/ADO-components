@@ -1,0 +1,42 @@
+<div class="loading" *ngIf="loading">
+    Loading...
+</div>
+
+<div *ngIf="!loggedIn" class="warning">
+    <div class="inner">
+        <h1>
+            Necesitas iniciar sesion
+        </h1>
+        <button style="margin-inline: auto;" mat-raised-button (click)="rtr.navigate(['login'])">Iniciar</button>
+    </div>
+</div>
+
+<div *ngIf="!loading && loggedIn" class="main-section">
+    <div class="nav-section">
+        <h1>Vistas</h1>
+        <div class="nav-elm" [ngClass]="vistaSelected == 'sol' ? 'selected' : ''" (click)="setVista('sol')">
+            <p>
+                Solicitar/ver eventos
+            </p>
+        </div>
+        <div class="nav-elm" [ngClass]="vistaSelected == 'ev' ? 'selected' : ''" (click)="setVista('ev')">
+            <p>
+                Evaluar Eventos
+            </p>
+        </div>
+        <div class="nav-elm" [ngClass]="vistaSelected == 'alumInsc' ? 'selected' : ''" (click)="setVista('alumInsc')">
+            <p>
+                Alumno/Inscripcion
+            </p>
+        </div>
+    </div>
+    <div class="display-components" [ngSwitch]="vistaSelected">
+        <app-crea-evento *ngSwitchCase="'sol'"></app-crea-evento>
+        <app-evaluar-eventos *ngSwitchCase="'ev'"></app-evaluar-eventos>
+        <app-alumno-inscr *ngSwitchCase="'alumInsc'"></app-alumno-inscr>
+    </div>
+    <button class="userBtn" mat-raised-button (click)="afAuth.signOut()">
+        <img [src]="userState.photoURL" alt="" class="photorul">
+        {{userState.email}}
+    </button>
+</div>

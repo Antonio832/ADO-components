@@ -1,0 +1,31 @@
+<main>
+    <h1>Lista de eventos</h1>
+    <div class="lista-eventos">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Horas</th>
+                <th>Modalidad</th>
+                <th>Aprobar</th>
+                <th>Rechazar</th>
+            </tr>
+            <tr *ngFor="let elm of eventos">
+                <td>{{elm.nombre}}</td>
+                <td>{{elm.tipo}}</td>
+                <td>{{elm.horas}}</td>
+                <td>{{elm.modalidad}}</td>
+                <td>
+                    <button mat-icon-button (click)="apruebaEvento(elm.id)">
+                        <mat-icon style="color: rgba(26, 190, 65, 0.785);">check_circle_outline</mat-icon>
+                    </button>
+                </td>
+                <td>
+                    <button mat-icon-button (click)="rechazarEvento(elm.id)">
+                        <mat-icon style="color: red;">highlight_off</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</main>

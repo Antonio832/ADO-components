@@ -1,0 +1,44 @@
+<div class="cont">
+    <h1>Eventos disponibles</h1>
+    <p *ngIf="!eventosAprobados.length" matCardSubtitle>No hay eventos disponibles</p>
+    <table *ngIf="eventosAprobados.length">
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Horas</th>
+            <th>Modalidad</th>
+            <th>Inscribirse</th>
+        </tr>
+        <tr *ngFor="let elm of eventosAprobados">
+            <td>{{elm.nombre}}</td>
+            <td>{{elm.tipo}}</td>
+            <td>{{elm.horas}}</td>
+            <td>{{elm.modalidad}}</td>
+            <td>
+                <button mat-raised-button (click)="inscribeEvento(elm.id, elm.nombre)">
+                    <mat-icon style="color: rgba(26, 190, 65, 0.785);">history_edu</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div class="eventos-ins" *ngIf="alumnoProfile">
+        <h1>Eventos Inscritos</h1>
+        <table *ngIf="alumnoProfile.eventos.length">
+            <tr>
+                <th>Nombre</th>
+                <th>Estatus</th>
+                <th>Calificaciones</th>
+            </tr>
+            <tr *ngFor="let elm of alumnoProfile.eventos">
+                <td>{{elm.nombreEvento}}</td>
+                <td>{{elm.activo ? 'Activo' : 'Inactivo'}}</td>
+                <td>
+                    <button mat-raised-button (click)="verEvento(elm.docRef, elm.nombreEvento)">
+                        Ver
+                        <mat-icon>visibility</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
